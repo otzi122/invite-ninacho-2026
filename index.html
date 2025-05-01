@@ -14,6 +14,10 @@
     <div class="video-background">
         <video autoplay loop playsinline id="bgVideo">
             <source src="img/background.mp4" type="video/mp4">
+            <source src="img/background.webm" type="video/webm">
+            <source src="img/background.ogv" type="video/ogg">
+            <!-- Fallback para navegadores que no soportan video -->
+            <img src="img/background.jpg" alt="Fondo animado">
         </video>
         <button class="sound-toggle" aria-label="Toggle sound">🔇</button>
     </div>
