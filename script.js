@@ -3,7 +3,7 @@ const video = document.getElementById('bgVideo');
 const soundToggle = document.querySelector('.sound-toggle');
 
 // Iniciar video en silencio
-video.muted = true;
+video.muted = false;
 
 soundToggle.addEventListener('click', () => {
     video.muted = !video.muted;
@@ -56,4 +56,4 @@ document.addEventListener('click', (e) => {
     if (!sidebar.contains(e.target) && !menuTrigger.contains(e.target)) {
         sidebar.classList.remove('active');
     }
-}); 
+});
