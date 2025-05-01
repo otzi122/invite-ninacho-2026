@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+
+  web:
+    image: php:7-apache
+    ports:
+      - '8080:80'
+    volumes:
+      - ./:/var/www/html
+    environment:
+      APACHE_DOCUMENT_ROOT: public/
+      LOG_PATH: php://stdout
+      TEMPLATE_PHP_INI: development
+      # APACHE_RUN_USER: 'docker'
+      # APACHE_RUN_GROUP: 'docker'
+  
+  ngrok:
+    image: wernight/ngrok
+    command: ngrok http -authtoken='25zIjvnqFmklRLa9LxbOjMZ9b9f_27TQCf5tywSoHksHouPkh' web:80
+    ports:
+      -  '10000:4040'
+    depends_on:
+      - web

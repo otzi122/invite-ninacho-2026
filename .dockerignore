@@ -1,0 +1,15 @@
+.git
+/var/cache
+/var/logs
+/.env.dist
+/.env.docker.dist
+/.php_cs.cache
+/node_modules
+/docker-compose.override.*
+/docker-compose.cli.*
+/build
+/.bundle
+/deploy
+/reports
+/yarn-error.log
+/vendor
