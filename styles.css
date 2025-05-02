@@ -107,8 +107,8 @@ body::before{
 .menu-trigger {
     font-family: var(--font-display);
     position: fixed;
-    bottom: 10%;
-    right: 40%;
+    bottom: 7%;
+    right: 38%;
     z-index: 100;
     background: var(--color-pineapple);
     border: none;
