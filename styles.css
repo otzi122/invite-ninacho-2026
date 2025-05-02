@@ -32,6 +32,12 @@ body {
     height: 100%;
     z-index: -1;
     overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.video-background.video-paused {
+    opacity: 0;
 }
 
 .video-background video {
