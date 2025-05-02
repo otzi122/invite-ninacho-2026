@@ -1,17 +1,10 @@
 // Control de sonido del video
 const video = document.getElementById('bgVideo');
 const soundToggle = document.querySelector('.sound-toggle');
+const playToggle = document.querySelector('.play-toggle');
 
-// Iniciar video en silencio
-video.muted = false;
+video.muted = true;
 
-soundToggle.addEventListener('click', () => {
-    video.muted = !video.muted;
-    soundToggle.textContent = video.muted ? '🔇' : '🔊';
-    soundToggle.classList.toggle('unmuted');
-});
-
-// Crear burbujas dinámicamente
 const bubblesContainer = document.querySelector('.bubbles');
 
 function createBubble() {
@@ -38,10 +31,8 @@ function createBubble() {
     }, duration * 1000);
 }
 
-// Crear burbujas periódicamente
 setInterval(createBubble, 300);
 
-// Funcionalidad del sidebar
 const menuTrigger = document.querySelector('.menu-trigger');
 const sidebar = document.querySelector('.sidebar');
 
@@ -51,9 +42,32 @@ menuTrigger.addEventListener('click', () => {
     menuTrigger.querySelector('.close').classList.toggle('hidden');
 });
 
-// Cerrar sidebar al hacer clic fuera
 document.addEventListener('click', (e) => {
     if (!sidebar.contains(e.target) && !menuTrigger.contains(e.target)) {
+        video.muted = !video.muted;
         sidebar.classList.remove('active');
+        menuTrigger.querySelector('.open').classList.remove('hidden');
+        menuTrigger.querySelector('.close').classList.add('hidden');
     }
+});
+
+soundToggle.addEventListener('click', () => {
+    video.muted = !video.muted;
+    soundToggle.innerHTML = video.muted
+        ? '<i class="fa-solid fa-volume-xmark"></i>'
+        : '<i class="fa-solid fa-volume-high"></i>';
+    soundToggle.classList.toggle('unmuted');
+});
+
+playToggle.addEventListener('click', () => {
+    if (video.paused) {
+        video.play();
+        playToggle.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        playToggle.classList.remove('paused');
+        return;
+    }
+
+    video.pause();
+    playToggle.innerHTML = '<i class="fa-solid fa-play"></i>';
+    playToggle.classList.add('paused');
 });

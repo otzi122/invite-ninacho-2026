@@ -129,7 +129,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     backdrop-filter: blur(8px);
 }
 
@@ -168,6 +167,8 @@ body {
     width: 100%;
     font-size: 24px;
     margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
 
 .banner {
@@ -208,10 +209,26 @@ body {
 
 /* Sound Toggle Button */
 .sound-toggle {
+    top: 5px;
+    left: 60px;
+}
+
+.play-toggle {
+    top: 5px;
+    left: 5px;
+}
+/* Contenedor de controles de video */
+.video-background .video-controls {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 100;
+    display: flex;
+    gap: 16px;
+    z-index: 101;
+}
+
+.sound-toggle,
+.play-toggle {
     background: var(--color-pineapple);
     border: none;
     padding: 12px;
@@ -227,15 +244,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 102;
+    position: fixed;
 }
 
-.sound-toggle:hover {
+.sound-toggle:hover, 
+.play-toggle:hover {
     transform: scale(1.1);
     background: var(--color-sea);
     color: white;
 }
 
-.sound-toggle.unmuted {
+.sound-toggle.unmuted, 
+.play-toggle.paused {
     background: var(--color-sea);
     color: white;
-} 
+}
+
+@media (min-width: 768px) {
+    .video-background .video-controls {
+        bottom: 40px;
+        right: 40px;
+        gap: 24px;
+    }
+}
