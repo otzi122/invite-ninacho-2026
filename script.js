@@ -1,11 +1,13 @@
 const video = document.getElementById('bgVideo');
 const videoContainer = document.querySelector('.video-background');
-const soundToggle = document.querySelector('.sound-toggle');
-const playToggle = document.querySelector('.play-toggle');
-
-video.muted = true;
-
+const menuTrigger = document.querySelector('.menu-trigger');
+const sidebar = document.querySelector('.sidebar');
 const bubblesContainer = document.querySelector('.bubbles');
+
+video.loop = false;
+video.muted = false;
+
+sidebar.classList.remove('active');
 
 function createBubble() {
     const bubble = document.createElement('div');
@@ -28,44 +30,28 @@ function createBubble() {
 
 setInterval(createBubble, 300);
 
-const menuTrigger = document.querySelector('.menu-trigger');
-const sidebar = document.querySelector('.sidebar');
-
 menuTrigger.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    menuTrigger.querySelector('.open').classList.toggle('hidden');
-    menuTrigger.querySelector('.close').classList.toggle('hidden');
-});
 
-document.addEventListener('click', (e) => {
-    if (!sidebar.contains(e.target) && !menuTrigger.contains(e.target)) {
+    if (sidebar.classList.contains('active')) {
         sidebar.classList.remove('active');
         menuTrigger.querySelector('.open').classList.remove('hidden');
         menuTrigger.querySelector('.close').classList.add('hidden');
-    }
-});
-
-soundToggle.addEventListener('click', () => {
-
-    console.log(video.muted);
-    video.muted = !video.muted;
-    soundToggle.innerHTML = video.muted
-        ? '<i class="fa-solid fa-volume-xmark"></i>'
-        : '<i class="fa-solid fa-volume-high"></i>';
-    soundToggle.classList.toggle('unmuted');
-});
-
-playToggle.addEventListener('click', () => {
-    if (video.paused) {
-        video.play();
-        playToggle.innerHTML = '<i class="fa-solid fa-pause"></i>';
-        playToggle.classList.remove('paused');
-        videoContainer.classList.remove('video-paused');
         return;
     }
 
-    video.pause();
-    playToggle.innerHTML = '<i class="fa-solid fa-play"></i>';
-    playToggle.classList.add('paused');
-    videoContainer.classList.add('video-paused');
+    videoContainer.classList.remove('video-hidden');
+    menuTrigger.style.display = 'none';
+    menuTrigger.querySelector('.open').classList.toggle('hidden');
+    menuTrigger.querySelector('.close').classList.toggle('hidden');
+    video.play();
+});
+
+
+video.addEventListener('ended', () => {
+    sidebar.classList.add('active');
+    videoContainer.classList.add('video-hidden');
+
+    menuTrigger.style.display = '';
+    menuTrigger.querySelector('.open').classList.add('hidden');
+    menuTrigger.querySelector('.close').classList.remove('hidden');
 });

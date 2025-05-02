@@ -11,35 +11,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Video de fondo -->
-    <div class="video-background">
-        <video autoplay loop playsinline id="bgVideo">
-            <source src="img/background.mp4" type="video/mp4">
-            <source src="img/background.webm" type="video/webm">
-            <source src="img/background.ogv" type="video/ogg">
-            <!-- Fallback para navegadores que no soportan video -->
-            <img src="img/background.jpg" alt="Fondo animado">
-        </video>
+    <div class="container">
+        <!-- Video de fondo -->
+        <div class="video-background video-hidden">
+            <video id="bgVideo">
+                <source src="img/background.mp4" type="video/mp4">
+                <source src="img/background.webm" type="video/webm">
+                <source src="img/background.ogv" type="video/ogg">
+                <!-- Fallback para navegadores que no soportan video -->
+                <img src="img/background.jpg" alt="Fondo animado">
+            </video>
+        </div>
+
+        <!-- Burbujas -->
+        <div class="bubbles"></div>
+
+        <div class="banner">
+            <img src="img/top_banner.png" alt="Banner">
+        </div>
+
+        <!-- Botón del menú -->
+        <button class="menu-trigger">
+            <span class="open">+ Info</span>
+            <span class="close hidden">Cerrar</span>
+        </button>
     </div>
-
-    <!-- Burbujas -->
-    <div class="bubbles"></div>
-
-    <div class="banner">
-        <img src="img/top_banner.png" alt="Banner">
-    </div>
-
-    <!-- Botón del menú -->
-    <button class="menu-trigger">
-        <span class="open">+ Info</span>
-        <span class="close hidden">Cerrar</span>
-    </button>
-    <button class="sound-toggle" aria-label="Toggle sound">
-        <i class="fa-solid fa-volume-high"></i>
-    </button>
-    <button class="play-toggle" aria-label="Play/Pause video">
-        <i class="fa-solid fa-pause"></i>
-    </button>
 
     <!-- Sidebar -->
     <div class="sidebar">
