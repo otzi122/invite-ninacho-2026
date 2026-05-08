@@ -9,8 +9,8 @@
     --wood-brown: #8D5A2B;
     --bone-white: #F8F4E8;
     --ink-black: #1A1A1A;
-    --font-display: 'Luckiest Guy', cursive;
-    --font-body: 'Fredoka', sans-serif;
+    --font-display: "Anton", sans-serif ;
+    --font-body: "IM Fell English SC", serif;
 }
 
 * {
@@ -25,6 +25,7 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+
 body::before{
     content: '';
     position: absolute;
@@ -39,7 +40,7 @@ body::before{
 
 .container {
     font-family: var(--font-body);
-    background: url('img/background.jpg') right/cover fixed no-repeat;
+    background: url('img/background.jpg') right/cover no-repeat;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -64,31 +65,36 @@ body::before{
 
 /* Botón del menú */
 .menu-trigger {
-    font-family: var(--font-display);
-    position: fixed;
-    bottom: 7%;
-    right: 38%;
-    z-index: 100;
-    background: url('img/lettering.png') center/contain fixed no-repeat;
-    border: none;
-    padding: 15px;
-    cursor: pointer;
-    color: var(--ink-black);
-    transition: all 0.3s ease;
-    font-size: 22px;
-    transition: all 0.3s ease-in-out;
-    height: 70%;
-    max-height: 500px;
+	position: fixed;
+	bottom: -4%;
+    left: 50%;
+    transform: translateX(-50%);
+	z-index: 100;
+	background: url('img/lettering.png') center/contain no-repeat;
+	border: none;
+	padding: 15px;
+	cursor: pointer;
+	color: var(--ink-black);
+	font-size: 22px;
+	transition: all 0.3s ease-in-out;
+	height: 70%;
+	max-height: 500px;
+	aspect-ratio: 3/4;
 }
 
 .menu-trigger p {
     font-size: 24px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    display: block;
+    max-width: 70%;
+    margin: auto;
 }
 
 .menu-trigger p span {
 	font-size: 20px;
 	display: block;
-	width: 50%;
+	width: 80%;
 	margin: auto;
 	margin-top: 20px;
 }
@@ -97,10 +103,8 @@ body::before{
 	display: block;
 	width: 50%;
 	margin: 40px auto 0;
-}
-
-.menu-trigger:hover {
-    transform: scale(1.1);
+    font-family: var(--font-body);
+    font-weight: 700;
 }
 
 /* Sidebar */
@@ -193,7 +197,7 @@ body::before{
 @media (min-width: 768px) {
 
     .container {
-        background: url('img/background.jpg') center/contain fixed no-repeat;
+        background: url('img/background.jpg') center/contain no-repeat;
     }
 
     .menu-trigger {
@@ -202,6 +206,14 @@ body::before{
         transform: translateX(-50%);
         padding: 20px 40px;
         font-size: 24px;
+    }
+
+    .menu-trigger p span {
+        width: 200px;
+    }
+
+    .menu-trigger .open {
+        width: 190px;
     }
 
     .menu-trigger:hover {
