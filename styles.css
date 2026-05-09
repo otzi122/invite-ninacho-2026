@@ -40,13 +40,21 @@ body::before{
 
 .container {
     font-family: var(--font-body);
-    background: url('img/background.jpg') right/cover no-repeat;
+    background: url('img/background.jpg') center/cover no-repeat;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
     max-width: 700px;
     margin: 0 auto;
     width: 100%;
+}
+
+
+@media (min-width: 768px) {
+
+    .container {
+        background: url('img/background.jpg') center/contain no-repeat;
+    }
 }
 
 @keyframes float {
@@ -63,23 +71,31 @@ body::before{
     }
 }
 
-/* Botón del menú */
+@keyframes shake {
+    0%, 100% {
+        transform: var(--menu-trigger-base-transform) translateX(0);
+    }
+    25% {
+        transform: var(--menu-trigger-base-transform) translateX(-4px);
+    }
+    75% {
+        transform: var(--menu-trigger-base-transform) translateX(4px);
+    }
+}
+
 .menu-trigger {
 	position: fixed;
-	bottom: -4%;
-    left: 38%;
-    transform: translateX(-50%);
+	bottom: 1%;
+	right: 1%;
+	background: var(--skin-beige);
 	z-index: 100;
-	background: url('img/lettering.png') center/contain no-repeat;
-	border: none;
 	padding: 15px;
 	cursor: pointer;
+	border: 3px solid var(--ink-black);
 	color: var(--ink-black);
-	font-size: 22px;
+    --menu-trigger-base-transform: translateX(0);
+    animation: shake 1.4s ease-in-out infinite;
 	transition: all 0.3s ease-in-out;
-	height: 70%;
-	max-height: 500px;
-	aspect-ratio: 3/4;
 }
 
 @media (min-width: 524px) {
@@ -88,29 +104,31 @@ body::before{
     }
 }
 
-.menu-trigger p {
-    font-size: 24px;
-    font-family: var(--font-display);
-    font-weight: 700;
-    display: block;
-    max-width: 70%;
-    margin: auto;
-}
+@media (min-width: 768px) {
 
-.menu-trigger p span {
-	font-size: 20px;
-	display: block;
-	width: 80%;
-	margin: auto;
-	margin-top: 20px;
+    .container {
+        background: url('img/background.jpg') center/contain no-repeat;
+    }
+
+    .menu-trigger {
+        left: 50%;
+        right: auto;
+        --menu-trigger-base-transform: translateX(-50%);
+        padding: 10px 40px;
+    }
+
+
+    .menu-trigger:hover {
+        animation-play-state: paused;
+        transform: var(--menu-trigger-base-transform) scale(1.1);
+    }
 }
 
 .menu-trigger .open {
 	display: block;
-	width: 50%;
-	margin: 40px auto 0;
-    font-family: var(--font-body);
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
 }
 
 /* Sidebar */
@@ -120,13 +138,20 @@ body::before{
     bottom: -100%;
     width: 100%;
     height: 100vh;
+    background: url('img/lettering.png') center/cover no-repeat;
     transition: 0.5s;
     z-index: 99;
-    padding: 60px 20px;
+    padding: 30vh 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     backdrop-filter: blur(8px);
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        background: url('img/lettering.png') center/contain no-repeat;
+    }
 }
 
 .sidebar::before{
@@ -136,7 +161,6 @@ body::before{
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--skin-beige);
     opacity: 0.7;
     z-index: -1;
 }
@@ -146,21 +170,19 @@ body::before{
 }
 
 .sidebar a {
-    font-family: var(--font-body);
-    color: var(--ink-black);
-    text-decoration: none;
-    font-size: 18px;
-    margin: 20px 0;
-    padding: 15px 30px;
-    background: var(--skin-beige);
-    border: 3px solid var(--ink-black);
-    transition: 0.3s;
-    text-align: center;
-    width: 80%;
-    max-width: 300px;
-    letter-spacing: 0.5px;
-    line-height: 1.5;
-    font-weight: 400;
+	font-family: var(--font-body);
+	color: var(--ink-black);
+	text-decoration: none;
+	font-size: 18px;
+	margin: 10px 0;
+	padding: 5px 10px;
+	border: 3px solid var(--ink-black);
+	transition: 0.3s;
+	text-align: center;
+	width: 110%;
+	max-width: 300px;
+	letter-spacing: 0.5px;
+	font-weight: 400;
 }
 
 .sidebar a:hover {
@@ -179,59 +201,6 @@ body::before{
     font-weight: 400;
 }
 
-.banner {
-    position: fixed;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 1;
-}
-
-.banner img {
-    max-width: 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
 .hidden {
     display: none;
-}
-
-@media (min-width: 768px) {
-
-    .container {
-        background: url('img/background.jpg') center/contain no-repeat;
-    }
-
-    .menu-trigger {
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-        padding: 20px 40px;
-        font-size: 24px;
-    }
-
-    .menu-trigger p span {
-        width: 200px;
-    }
-
-    .menu-trigger .open {
-        width: 190px;
-    }
-
-    .menu-trigger:hover {
-        transform: translateX(-50%) scale(1.1);
-    }
-
-    .banner {
-        top: 0;
-    }
-
-    .banner img {
-        width: auto;
-        max-width: 500px;
-    }
 }
